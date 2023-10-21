@@ -1,4 +1,4 @@
-workspace(name="communication-router")
+workspace(name="communication_router")
 
 http_archive(
     name = "com_google_benchmark",
