@@ -1,4 +1,17 @@
-workspace(name="communication_router")
+workspace(name="router")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+local_repository(
+    name = "core",
+    path = "communication-core/core",
+)
+
+load("@core//bazel:third_party_repositories.bzl", "include_spdlog")
+include_spdlog()
+
+local_repository(
+    name = "communication_core",
+    path = "communication-core",
+)
 
 http_archive(
     name = "com_google_benchmark",
