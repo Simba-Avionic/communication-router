@@ -13,8 +13,8 @@
 #include <cstdint>
 #include <string>
 
-#include "app/database/Idatabase.h"
-#include "app/database/database_element.h"
+#include "Idatabase.h"
+#include "database_element.h"
 #include "unordered_map"
 namespace simba {
 namespace router {

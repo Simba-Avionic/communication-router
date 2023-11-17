@@ -13,7 +13,7 @@
 #include <cstdint>
 #include <string>
 
-#include "app/database/database_element.h"
+#include "database_element.h"
 #include "results/result.h"
 
 namespace simba {
