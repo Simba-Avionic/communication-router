@@ -24,7 +24,7 @@ class DatabaseElement {
       : ip_{ip}, port_{port_} {}
   const inline std::string GetIp() { return ip_; }
   const inline uint16_t GetPort() { return port_; }
-  ~DatabaseElement();
+  ~DatabaseElement() = default;
 };
 }  // namespace router
 }  // namespace simba

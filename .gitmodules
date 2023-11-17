@@ -1,3 +1,6 @@
 [submodule "communication-core"]
 	path = communication-core
 	url = git@github.com:Simba-Avionic/communication-core.git
+[submodule "core"]
+	path = core
+	url = git@github.com:Simba-Avionic/core.git

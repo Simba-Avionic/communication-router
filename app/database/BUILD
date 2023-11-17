@@ -7,4 +7,5 @@ cc_library(
         "database_element.h",
     ],
     visibility = ["//app:__subpackages__"],
+    deps = ["@core"],
 )

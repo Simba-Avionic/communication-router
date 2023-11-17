@@ -2,7 +2,7 @@ workspace(name="router")
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 local_repository(
     name = "core",
-    path = "communication-core/core",
+    path = "core",
 )
 
 load("@core//bazel:third_party_repositories.bzl", "include_spdlog")

@@ -10,5 +10,6 @@ cc_binary(
         "//app/json-parser:JsonParser",
         "@com_json//:json",
         "@core",
+        "@communication_core",
     ],
 )

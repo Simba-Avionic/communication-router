@@ -14,15 +14,20 @@
 #include <string>
 
 #include "app/database/database_element.h"
+#include "results/result.h"
 
 namespace simba {
 namespace router {
 class IDatabase {
  private:
  public:
-  virtual DatabaseElement GetService(const std::uint16_t service_id) = 0;
+  virtual simba::core::Result<DatabaseElement> GetService(
+      const std::uint16_t service_id) = 0;
   virtual bool ServiceExist(const std::uint16_t service_id) = 0;
-  virtual void AddService(DatabaseElement& element) = 0;
+  virtual void AddService(const std::uint16_t service_id,
+                          const DatabaseElement& element) = 0;
+  virtual DatabaseElement CreatDatabaseElement(const std::string& ip,
+                                               const int16_t port) = 0;
 };
 }  // namespace router
 }  // namespace simba

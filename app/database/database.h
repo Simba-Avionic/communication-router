@@ -12,16 +12,26 @@
 #define ROUTER_APP_DATABASE_DATABASE_H_
 #include <cstdint>
 #include <string>
-#include "app/database/database_element.h"
 
+#include "app/database/Idatabase.h"
+#include "app/database/database_element.h"
 #include "unordered_map"
 namespace simba {
 namespace router {
-class Database {
+class Database : public IDatabase {
  private:
   std::unordered_map<std::uint16_t, DatabaseElement> db{};
-  public:
 
+ public:
+  simba::core::Result<DatabaseElement> GetService(
+      const std::uint16_t service_id) override;
+  bool ServiceExist(const std::uint16_t service_id) override;
+  void AddService(const std::uint16_t service_id,
+                  const DatabaseElement& element) override;
+  DatabaseElement CreatDatabaseElement(const std::string& ip,
+                                       const int16_t port) override;
+
+ public:
 };
 }  // namespace router
 }  // namespace simba

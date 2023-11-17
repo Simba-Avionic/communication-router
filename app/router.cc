@@ -9,11 +9,23 @@
  *
  */
 #include "app/router.h"
+
+#include "database/database.h"
+#include "json-parser/database_json_parser.h"
+#include "sockets/ipc_socket.h"
 namespace simba {
 namespace router {
 void Router::Run(const std::unordered_map<std::string, core::Parm>& parms) {
-    this->logger_->Debug("Router started");
+  Database db{};
+  this->logger_->Debug("Router started");
+  com::soc::IpcSocket soc{};
+  soc.Init(com::soc::SocketConfig{"testowy.socket", 0, 0});
+  soc.StartRXThread();
+  this->SleepMainThred();
+  //   soc.Transmit("testowy.socket", 0,
+  //                std::vector<uint8_t>{'D', 'i', 'a', 'l', 'a'});
+  // json::DatabaseJsonParser::LoadJson(db,"/home/bartek/simba/communication-router/app/resource/provide_list.json");
 }
-void Router::Stop() {}
+void Router::Stop() { this->logger_->Debug("Router stop"); }
 }  // namespace router
 }  // namespace simba
