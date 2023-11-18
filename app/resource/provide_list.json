@@ -1,19 +1,106 @@
 {
-    "remote":[
-      {
-        "id":1,
-        "ip":"192.168.10.1",
-        "port":3554
-      },
-      {
-        "id":35,
-        "ip":"192.168.10.6",
-        "port":3554
-      },
-      {
-        "id":8,
-        "ip":"router.x.8", 
-        "port":0
+  "interfaces": [
+    {
+      "name": "app1",
+      "ip": "192.168.1.1",
+      "ipc": "testowy.socket2",
+      "port": 1000
+    },
+    {
+      "name": "app2",
+      "ip": "192.168.1.1",
+      "ipc": "testowy.socket2",
+      "port": 1001
+    },
+    {
+      "name": "app3",
+      "ip": "192.168.1.3",
+      "ipc": "testowy.socket2",
+      "port": 1003
+    },
+    {
+      "name": "rut1",
+      "ip": "192.168.1.3",
+      "ipc": "rut2",
+      "port": 1003
+    },
+    {
+      "name": "rut2",
+      "ip": "192.168.1.3",
+      "ipc": "testowy.rut2",
+      "port": 1003
+    }
+  ],
+
+  "services": [
+    {
+      "name": "app1",
+      "service_id": 100,
+      "intreface": "app2",
+      "methods": [
+        {
+          "method_id": 1,
+          "name": "getcos"
+        }
+      ],
+
+      "req_services":[
+        "app2/getcos",
+        "app2/getcos2",
+        "app3/getcos"
+      ],
+      "conf":{
+        "someconf":"val",
+        "logLevel":"kDebug"
       }
-    ]
-  }
+    },
+    {
+      "name": "app2",
+      "service_id": 101,
+      "intreface": "app2",
+      "methods": [
+        {
+          "method_id": 1,
+          "name": "getcos"
+        },
+        {
+          "method_id": 2,
+          "name": "getcos2"
+        }
+      ]
+    },
+    {
+      "name": "app3",
+      "service_id": 102,
+      "intreface": "app3",
+      "methods": [
+        {
+          "method_id": 1,
+          "name": "getcos"
+        },
+        {
+          "method_id": 2,
+          "name": "getcos2"
+        }
+      ]
+    }
+  ],
+
+  "routers": [
+    {
+      "name": "router 1",
+      "interfaces": [
+        "app1"
+        
+      ],
+      "interface":"rut1"
+    },
+    {
+      "name": "router 2",
+      "interfaces": [
+        "app2"
+      ],
+      "interface":"rut2"
+    }
+  ]
+}

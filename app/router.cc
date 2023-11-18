@@ -33,13 +33,14 @@ void Router::Run(const std::unordered_map<std::string, core::Parm>& parms) {
   simba::com::someip::SomeIpController com{
       0x100, std::make_unique<com::soc::IpcSocket>(), logger_,
       com::soc::SocketConfig{"testowy.socket", 0, 0}};
+      com.Init();
   com.AddMethod(0x0001, [&](const std::vector<uint8_t> payload) {
     this->logger_->Info("IPC zadziałało !!!!!");
     return simba::core::Result<
         std::pair<std::vector<uint8_t>, com::core::data::MessageCode>>{
         {{1, 2, 3, 4, 5}, com::core::data::kEOk}};
   });
-  com.Init();
+  
   this->SleepMainThred();
 }
 void Router::Stop() { this->logger_->Debug("Router stop"); }

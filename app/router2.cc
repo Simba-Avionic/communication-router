@@ -35,6 +35,7 @@ void Router::Run(const std::unordered_map<std::string, core::Parm>& parms) {
       com::soc::SocketConfig{"testowy.socket2", 0, 0}};
   com.Init();
   while (true) {
+    const auto res = com.Request("app2/getcos" {});
     const auto res = com.Request(0x100, 0x0001, {});
     if (res.HasValue()) {
       logger_->Info("Pass");
